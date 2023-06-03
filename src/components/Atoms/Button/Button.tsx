@@ -1,10 +1,11 @@
 'use client';
 import React from 'react';
-import styled, { css, DefaultTheme, ThemedStyledProps } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ButtonProps {
 	variant?: 'contained' | 'outlined' | 'iconButton';
 	children: React.ReactNode;
+	handleClick?: () => void;
 }
 
 const CustomButton = styled.button<ButtonProps>`
@@ -91,8 +92,12 @@ const CustomButton = styled.button<ButtonProps>`
 		`}
 `;
 
-const Button = ({ variant, children }: ButtonProps) => {
-	return <CustomButton variant={variant}>{children}</CustomButton>;
+const Button = ({ variant, children, handleClick }: ButtonProps) => {
+	return (
+		<CustomButton variant={variant} onClick={handleClick}>
+			{children}
+		</CustomButton>
+	);
 };
 
 export default Button;
