@@ -20,7 +20,7 @@ const Title = styled.h1<TypographyProps>`
 			line-height: 1;
 			color: ${color};
 			${{ ...sx }}
-			@media screen and (min-width: ${theme.breakPoints.md}) {
+			@media screen and (min-width: ${theme.breakPoints.md}px) {
 				font-size: 5vw;
 			}
 		`}
@@ -35,7 +35,7 @@ const SectionTitle = styled.h2<TypographyProps>`
 			letter-spacing: 0.4px;
 			color: ${color};
 			${{ ...sx }}
-			@media screen and (min-width: ${theme.breakPoints.md}) {
+			@media screen and (min-width: ${theme.breakPoints.md}px) {
 				font-size: 3vw;
 			}
 		`}
@@ -50,7 +50,7 @@ const SubTitle = styled.h3<TypographyProps>`
 			color: ${color};
 			${{ ...sx }}
 			letter-spacing: 0.2px;
-			@media screen and (min-width: ${theme.breakPoints.md}) {
+			@media screen and (min-width: ${theme.breakPoints.md}px) {
 				font-size: 1.3vw;
 			}
 		`}
@@ -66,7 +66,7 @@ const BodyText = styled.p<TypographyProps>`
 			color: ${color};
 			line-height: 1.6;
 			${{ ...sx }}
-			@media screen and (min-width: ${theme.breakPoints.md}) {
+			@media screen and (min-width: ${theme.breakPoints.md}px) {
 				font-size: 0.9rem;
 			}
 		`}

@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='en'>
-			<body className={roboto.className}>
+			<body className={roboto.className} suppressHydrationWarning={true}>
 				<ThemeProvider>{children}</ThemeProvider>
 			</body>
 		</html>

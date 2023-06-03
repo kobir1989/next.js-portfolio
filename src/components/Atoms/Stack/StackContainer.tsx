@@ -4,29 +4,33 @@ import styled, { css } from 'styled-components';
 
 interface StackProps {
 	children: React.ReactNode;
-	direction: 'row' | 'column';
-	justifyContent?: 'flex-start' | 'flex-end' | 'center';
+	direction?: 'row' | 'column';
+	justifyContent?: 'space-between' | 'space-around' | 'center';
 	alignItems?: 'flex-start' | 'flex-end' | 'center';
 	gap?: string;
 	flexWrap?: 'flex-wrap';
+	sx?: object;
 }
 
 const StyledStack = styled.div<StackProps>`
 	display: flex;
-	${({ direction }) =>
+
+	${({ direction, sx }) =>
 		direction === 'row' &&
 		css`
 			flex-direction: row;
+			${{ ...sx }}
 		`}
-	${({ direction }) =>
+	${({ direction, sx }) =>
 		direction === 'column' &&
 		css`
 			flex-direction: column;
+			${{ ...sx }}
 		`}
     ${({ justifyContent }) =>
-		justifyContent === 'flex-start' &&
+		justifyContent === 'space-around' &&
 		css`
-			justify-content: flex-start;
+			justify-content: space-around;
 		`}
     ${({ justifyContent }) =>
 		justifyContent === 'center' &&
@@ -34,9 +38,9 @@ const StyledStack = styled.div<StackProps>`
 			justify-content: center;
 		`}
     ${({ justifyContent }) =>
-		justifyContent === 'flex-end' &&
+		justifyContent === 'space-between' &&
 		css`
-			justify-content: flex-end;
+			justify-content: space-between;
 		`}
     ${({ alignItems }) =>
 		alignItems === 'flex-start' &&
@@ -65,10 +69,10 @@ const StyledStack = styled.div<StackProps>`
 		`}
 `;
 
-// This component is inspired by the MUI Stack Component and provides similar functionality for creating flexible layouts using flexbox.
-const StackContainer = ({ children, direction = 'column', gap, flexWrap, justifyContent, alignItems }: StackProps) => {
+// This component is kind of similar to the MUI Stack Component and provides similar functionality for creating flexible layouts using flexbox.
+const StackContainer = ({ sx, children, direction = 'column', gap, flexWrap, justifyContent, alignItems }: StackProps) => {
 	return (
-		<StyledStack direction={direction} alignItems={alignItems} justifyContent={justifyContent} gap={gap} flexWrap={flexWrap}>
+		<StyledStack direction={direction} alignItems={alignItems} justifyContent={justifyContent} gap={gap} flexWrap={flexWrap} sx={sx}>
 			{children}
 		</StyledStack>
 	);

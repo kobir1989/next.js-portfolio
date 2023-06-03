@@ -1,26 +1,49 @@
+'use client';
+import Box from '@/components/Atoms/Box/Box';
+import Icon from '@/components/Atoms/Icon/Icon';
+import NextImage from '@/components/Atoms/NextImage/NextImage';
+import StackContainer from '@/components/Atoms/Stack/StackContainer';
+import Typography from '@/components/Atoms/Typography/Typography';
+import Link from 'next/link';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const StyledCardWrapper = styled.div``;
-const Card = () => {
+type CardProps = {
+	projectName: string;
+	link: string;
+	git: string;
+};
+
+const StyledCardWrapper = styled.div`
+	${({ theme }) =>
+		theme &&
+		css`
+			width: 100%;
+			transition: all 0.2s ease-in;
+			box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			background-color: ${theme.colors.white};
+		`}
+`;
+const Card = ({ projectName, link, git }: CardProps) => {
 	return (
 		<StyledCardWrapper>
-			<div>{/* <img src={imageUrl} alt={projectName} /> */}</div>
-			<div
-				onClick={(e) => {
-					e.stopPropagation();
-				}}
-			>
-				{/* <h3>{projectName}</h3> */}
-				{/* <div className={styles.card_links}>
-					<Link to={link} target='_blank' rel='noopener noreferrer'>
+			<Box sx={{ width: '100%', heigth: '40%' }}>
+				<NextImage src='/assets/placeholder.jpg' alt='placeholder' width={300} height={150} style={{ width: '100%', height: '100%' }} />
+			</Box>
+			<StackContainer direction='column' gap='2rem' justifyContent='space-between' sx={{ padding: '1rem 1rem 1.5rem 1rem', background: '##F5F4FC' }}>
+				<Typography variant='subTitle'>{projectName}</Typography>
+				<StackContainer direction='row' justifyContent='space-between'>
+					<Link href={link} target='_blank' rel='noopener noreferrer'>
 						<Icon name='view' size='1.5rem' />
 					</Link>
-					<Link to={git} target='_blank' rel='noopener noreferrer'>
+					<Link href={git} target='_blank' rel='noopener noreferrer'>
 						<Icon name='github' size='1.5rem' />
 					</Link>
-				</div> */}
-			</div>
+				</StackContainer>
+			</StackContainer>
 		</StyledCardWrapper>
 	);
 };

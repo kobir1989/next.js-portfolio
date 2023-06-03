@@ -8,7 +8,7 @@ export const theme = {
 		light_gray: '#aeb4be',
 		dark_gray: '#474747',
 	},
-	//wil be use mobile first approach
+
 	breakPoints: {
 		xs: 412,
 		sm: 575,
