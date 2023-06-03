@@ -1,7 +1,11 @@
-import 'styles/global.css';
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
+import ThemeProvider from '@/theme/themeProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+export const roboto = Roboto({
+	weight: ['100', '300', '400', '500', '700', '900'],
+	subsets: ['latin'],
+	variable: '--roboto-default',
+});
 
 export const metadata = {
 	title: 'Kabir Hossain',
@@ -11,7 +15,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='en'>
-			<body className={inter.className}>{children}</body>
+			<body className={roboto.className}>
+				<ThemeProvider>{children}</ThemeProvider>
+			</body>
 		</html>
 	);
 }
